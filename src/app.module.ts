@@ -5,6 +5,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UserResolver } from './providers/database/resolvers/user/UserResolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
+import { TypeOrmConfig } from './config/database/mssql/mssql.config';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
 @Module({
   imports: [
@@ -13,22 +15,10 @@ import { join } from 'path';
       // envFilePath: `.${process.env.NODE_ENV}.env`,
     }),
     TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: 'mssql',
-        host: configService.get('DB_HOST'),
-        port: Number(configService.get('DB_PORT')),
-        username: configService.get('DB_USERNAME'),
-        password: configService.get('DB_PASSWORD'),
-        database: configService.get('DB_DATABASE'),
-        entities: [],
-        options: {
-          encrypt: false,
-        },
-        timezone: 'local',
-        synchronize: true,
-        logging: true,
-      })
+      useClass: TypeOrmConfig,
+      dataSourceFactory: async (options: DataSourceOptions) => {
+        return new DataSource(options).initialize()
+      }
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
