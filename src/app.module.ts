@@ -5,7 +5,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UserResolver } from './providers/database/resolvers/user/UserResolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
-import { TypeOrmConfig } from './config/database/mssql/mssql.config';
+//import { TypeOrmConfig } from './config/database/mssql/mssql.config';
+import { TypeOrmConfig } from './config/database/postgresql/postgresql.config';
 import { DataSource, DataSourceOptions } from 'typeorm';
 
 @Module({
