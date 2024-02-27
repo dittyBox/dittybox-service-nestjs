@@ -19,6 +19,11 @@ https://stack94.tistory.com/entry/NestJS-NestJS%EC%99%80-TypeORM%EC%9D%84-%ED%99
 
 https://github.com/codefactory-co/nestjs-lv1/blob/4f358495060a8788d1d176b998fd26f609e5a599/src/common/interceptor/transaction.interceptor.ts
 
+interceptor transection
+https://annahxxl.tistory.com/1
+https://github.com/search?q=%40UseInterceptors%28TransactionInterceptor%29&type=code
+
+
 
 트랜젝션 관리 하는 부분 추가
 jwt auth 추가
@@ -26,3 +31,6 @@ typeOrm Graphql 사용 db crud 작성
 로그인 로그아웃 구현
 로그 구현
 서버 1차 배포
+
+
+https://www.jetbrains.com/ko-kr/decompiler/download/#section=web-installer
